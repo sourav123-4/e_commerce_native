@@ -1,4 +1,4 @@
-import {HStack, VStack} from 'native-base';
+import {HStack, VStack, useToast} from 'native-base';
 import React, {useEffect, useState} from 'react';
 import {
   Button,
@@ -11,8 +11,8 @@ import {
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {View, Text, Modal} from 'react-native';
 import {useTheme} from '@react-navigation/native';
-export const MyAccount = ({navigation, theme}) => {
-  console.log('I am theme', theme);
+export const MyAccount = ({navigation}) => {
+  const toast = useToast();
   const {colors, fonts} = useTheme();
   const [imageUri, setImageUri] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -49,6 +49,16 @@ export const MyAccount = ({navigation, theme}) => {
 
   return (
     <View style={[styles(colors, fonts).mainContainer]}>
+      {/* <Button
+        onPress={() => {
+          if (!toast.isActive()) {
+            toast.show({
+              title: "Hey! You can't create a duplicate toast",
+            });
+          }
+        }}
+        title="click me!"
+      /> */}
       <Text style={[styles(colors, fonts).text, {marginLeft: 10}]}>
         Account
       </Text>
@@ -79,14 +89,20 @@ export const MyAccount = ({navigation, theme}) => {
                   borderRadius: 100,
                   borderColor: 'gray',
                   margin: 10,
-                  backgroundColor: 'gray',
+                  backgroundColor: colors.background,
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
                 <Text style={styles(colors, fonts).text}>Upload</Text>
               </TouchableOpacity>
             )}
-            <Text style={{margin: 10, fontSize: 17, fontWeight: '700'}}>
+            <Text
+              style={{
+                margin: 10,
+                fontSize: 17,
+                fontWeight: '700',
+                color: colors.background,
+              }}>
               Guest
             </Text>
             {imageUri ? (
@@ -97,7 +113,7 @@ export const MyAccount = ({navigation, theme}) => {
                     marginTop: 40,
                     fontSize: 17,
                     fontWeight: '700',
-                    color: 'blue',
+                    color: colors.linkabletext,
                   }}>
                   Edit
                 </Text>
@@ -191,7 +207,9 @@ export const MyAccount = ({navigation, theme}) => {
       <TouchableOpacity
         onPress={() => navigation.navigate('SignIn')}
         style={{justifyContent: 'center', alignItems: 'center', padding: 10}}>
-        <Text>LOGOUT</Text>
+        <Text style={{color: colors.heading, fontSize: 18, fontWeight: '800'}}>
+          LOGOUT
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -207,13 +225,14 @@ const styles = (colors, fonts) => {
       paddingTop: 5,
     },
     text: {
-      color: 'white',
+      color: colors.heading,
       fontSize: 16,
       fontWeight: '800',
     },
     textofcomponent: {
       fontSize: 16,
       fontWeight: 'bold',
+      color: colors.linkabletext,
     },
     container: {
       backgroundColor: 'white',
@@ -258,7 +277,7 @@ const styles = (colors, fonts) => {
       backgroundColor: '#F194FF',
     },
     buttonClose: {
-      backgroundColor: '#2196F3',
+      backgroundColor: colors.background,
     },
     textStyle: {
       color: 'white',

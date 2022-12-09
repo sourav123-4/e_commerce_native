@@ -25,6 +25,8 @@ export const nativeTheme = {
     ...DefaultTheme.colors,
     heading: 'white',
     background: '#87ab69',
+    text: 'gray',
+    linkabletext: 'orange',
   },
   fonts: {
     ...DefaultTheme.fonts,

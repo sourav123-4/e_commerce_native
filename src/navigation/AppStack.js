@@ -6,7 +6,7 @@ import {AuthStack} from './AuthStack';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import FIcon from 'react-native-vector-icons/Feather';
-
+import {useTheme} from '@react-navigation/native';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -24,24 +24,43 @@ const DisplayStack = () => {
 };
 
 export const AppStack = () => {
+  const {colors} = useTheme();
   return (
     <Tab.Navigator>
       <Tab.Screen
         name="HomeStack"
         component={DisplayStack}
         options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name="home" color={color} size={size} />
-          ),
+          tabBarInactiveTintColor: 'orange',
+          tabBarActiveTintColor: colors.background,
+          tabBarIcon: ({focused, size}) => {
+            size = focused ? 25 : 22;
+            return (
+              <Icon
+                name="home"
+                color={!focused ? 'orange' : colors.background}
+                size={size}
+              />
+            );
+          },
           headerShown: false,
         }}
       />
       <Tab.Screen
         name="Search"
         options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name="search" color={color} size={size} />
-          ),
+          tabBarInactiveTintColor: 'orange',
+          tabBarActiveTintColor: colors.background,
+          tabBarIcon: ({focused, color, size}) => {
+            size = focused ? 25 : 22;
+            return (
+              <Icon
+                name="search"
+                color={!focused ? 'orange' : colors.background}
+                size={size}
+              />
+            );
+          },
           headerShown: false,
         }}
         component={SearchScreen}
@@ -49,9 +68,18 @@ export const AppStack = () => {
       <Tab.Screen
         name="MyOrder"
         options={{
-          tabBarIcon: ({color, size}) => (
-            <FIcon name="package" color={color} size={size} />
-          ),
+          tabBarInactiveTintColor: 'orange',
+          tabBarActiveTintColor: colors.background,
+          tabBarIcon: ({focused, color, size}) => {
+            size = focused ? 25 : 22;
+            return (
+              <FIcon
+                name="package"
+                color={!focused ? 'orange' : colors.background}
+                size={size}
+              />
+            );
+          },
           headerShown: false,
         }}
         component={MyOrders}
@@ -59,9 +87,18 @@ export const AppStack = () => {
       <Tab.Screen
         name="MyAccount"
         options={{
-          tabBarIcon: ({color, size}) => (
-            <Icon name="user" color={color} size={size} />
-          ),
+          tabBarInactiveTintColor: 'orange',
+          tabBarActiveTintColor: colors.background,
+          tabBarIcon: ({focused, color, size}) => {
+            size = focused ? 25 : 22;
+            return (
+              <Icon
+                name="user"
+                color={!focused ? 'orange' : colors.background}
+                size={size}
+              />
+            );
+          },
           headerShown: false,
         }}
         component={MyAccount}

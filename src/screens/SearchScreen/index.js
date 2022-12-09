@@ -203,9 +203,11 @@ const styles = colors =>
     title: {
       fontSize: 16,
       fontWeight: '800',
+      color: 'orange',
     },
     previousprice: {
       textDecorationLine: 'line-through',
+      color: colors.text,
     },
     price: {
       fontSize: 14,

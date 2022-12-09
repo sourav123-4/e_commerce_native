@@ -27,6 +27,7 @@ const ListItem = [
     price: 45,
     weight: 1,
     unit: 'Kg',
+    count: 1,
     image:
       'https://feeds.abplive.com/onecms/images/uploaded-images/2021/07/12/a7056e8c342e9fe4f751ce7b4263a215_original.jpg?impolicy=abp_images&imwidth=720',
   },
@@ -36,6 +37,7 @@ const ListItem = [
     price: 20,
     weight: 12,
     unit: 'piece',
+    count: 1,
     image:
       'https://www.mashed.com/img/gallery/heres-what-happens-when-you-eat-a-banana-every-day/intro-1596497583.jpg',
   },
@@ -45,6 +47,7 @@ const ListItem = [
     price: 30,
     weight: 1,
     unit: 'piece',
+    count: 1,
     image:
       'https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Kiwi-fruits-582a07b.jpg?quality=90&resize=661%2C600',
   },
@@ -53,6 +56,7 @@ const ListItem = [
     title: 'Papaya',
     price: 210,
     weight: 1,
+    count: 1,
     unit: 'Kg',
     image:
       'https://cdn-prod.medicalnewstoday.com/content/images/articles/275/275517/a-papaya-cut-in-half.jpg',
@@ -61,6 +65,7 @@ const ListItem = [
     id: '104',
     title: 'Guava',
     price: 60,
+    count: 1,
     weight: 1,
     unit: 'kg',
     image: 'https://www.santosfood.com/wp-content/uploads/2020/01/4-4.jpg',
@@ -69,6 +74,7 @@ const ListItem = [
     id: '105',
     title: 'Lichi',
     price: 200,
+    count: 1,
     weight: 1,
     unit: 'Kg',
     image:
@@ -89,7 +95,7 @@ const CategoryItem = ({title, image}) => (
       />
     </View>
 
-    <Text fontWeight={700} fontSize="sm">
+    <Text fontWeight={700} fontSize="sm" color="orange.300">
       {title}
     </Text>
   </VStack>
@@ -111,7 +117,7 @@ const ProductItem = ({
     space={1}
     padding={5}
     rounded={15}
-    borderColor="emerald.300"
+    borderColor="orange.300"
     borderWidth={1}>
     <Image
       source={{
@@ -121,19 +127,16 @@ const ProductItem = ({
       size="xl"
       rounded="lg"
     />
-    <Text fontWeight={700} fontSize="lg">
+    <Text fontWeight={700} fontSize="lg" color="orange.300">
       {title}
     </Text>
-    <Text fontSize="sm" fontWeight={700}>
+    <Text fontSize="sm" fontWeight={700} color="green.400">
       {weight} {unit}
     </Text>
-    <Text fontSize="xl" fontWeight={700}>
+    <Text fontSize="xl" fontWeight={700} color="orange.300">
       {price} <Icon name="rupee" />
     </Text>
-    <Button
-      bgColor="emerald.700"
-      px={8}
-      onPress={() => dispatch(addOrder(data))}>
+    <Button bgColor="green.400" px={8} onPress={() => dispatch(addOrder(data))}>
       <Text color="white" fontWeight={700} fontSize="lg">
         Add
       </Text>
@@ -190,7 +193,7 @@ export const Home = ({navigation}) => {
             </Text>
             <Divider />
             <View>
-              <Text px={2} fontSize="xl" fontWeight={700}>
+              <Text px={2} fontSize="xl" fontWeight={700} color="orange.300">
                 Categories
               </Text>
               <HStack flexWrap={'wrap'}>
